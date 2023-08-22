@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Blue pill",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "configFiles": [
+        "C:\\Users\\dgexi\\AppData\\Local\\Programs\\xpack-openocd-0.11.0-5-win32-x64\\xpack-openocd-0.11.0-5\\scripts\\interface\\stlink-v2.cfg",
+        "C:\\Users\\dgexi\\AppData\\Local\\Programs\\xpack-openocd-0.11.0-5-win32-x64\\xpack-openocd-0.11.0-5\\scripts\\target\\stm32f1x.cfg"
+      ],
+      "device": "STM32F103C8",  
+      "svdFile": "",
+      "executable": "${workspaceFolder}/build/bluepilltest.elf",
+      "preLaunchTask": "Build all",
+      "liveWatch": {
+        "enabled": true,
+        "samplesPerSecond": 4
+      }
+    },
+    {
+      "showDevDebugOutput": "parsed",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/bluepilltest.elf",
+      "name": "Debug STM32",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      "preLaunchTask": "Build STM",
+      "device": "stm32f103xb.s",
+      "configFiles": [
+        "openocd.cfg"
+      ],
+      "svdFile": "STM32F103xx.svd"
+    },
+    {
+      "showDevDebugOutput": "parsed",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/bluepilltest.elf",
+      "name": "Attach STM32",
+      "request": "attach",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      "preLaunchTask": "Build STM",
+      "device": "stm32f103xb.s",
+      "configFiles": [
+        "openocd.cfg"
+      ],
+      "svdFile": "STM32F103xx.svd"
+    }
+  ]
+}
